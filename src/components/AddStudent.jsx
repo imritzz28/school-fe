@@ -21,6 +21,7 @@ import moment from 'moment'
 import { v4 as uuid } from 'uuid'
 import * as Constants from './Constants'
 import instructions from './../instructions.jpg'
+
 const initialValue = {
   photo: null,
   photo_name: '',
@@ -39,6 +40,7 @@ const initialValue = {
   fathermobile: '',
   mothername: '',
   mothermobile: '',
+  rollno:'',
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -115,9 +117,10 @@ const AddUser = () => {
     fathermobile,
     mothername,
     mothermobile,
+    rollno,
   } = student
   const classes = useStyles()
-
+  
   const onValueChange = (e) => {
     setStudent({ ...student, [e.target.name]: e.target.value })
   }
@@ -174,6 +177,7 @@ const AddUser = () => {
     formData.append('mobile_1', mobile_1)
     formData.append('mobile_2', mobile_2)
     formData.append('address', address.toUpperCase())
+    formData.append('rollno', rollno)
     formData.append('grno', grno)
     formData.append('standard', standard)
     formData.append('division', division)
@@ -242,14 +246,6 @@ const AddUser = () => {
                 onChange={(e) => onValueChange(e)}
                 variant="outlined"
               />
-              {/* <InputLabel htmlFor="my-input">School Name</InputLabel>
-          <OutlinedInput
-            onChange={(e) => onValueChange(e)}
-            name="school_name"
-            value={schoolName !== 'School not found' ? schoolName : school_name}
-            disabled={schoolName !== 'School not found'}
-            id="my-input"
-          /> */}
             </FormControl>
             <FormControl>
               <TextField
@@ -261,14 +257,6 @@ const AddUser = () => {
                 onChange={(e) => onValueChange(e)}
                 variant="outlined"
               />
-              {/* <InputLabel htmlFor="full_name">Full Name</InputLabel>
-          <OutlinedInput
-            onChange={(e) => onValueChange(e)}
-            name="full_name"
-            value={full_name}
-            id="full_name"
-            required={true}
-          /> */}
             </FormControl>
 
             <FormControl>
@@ -285,16 +273,6 @@ const AddUser = () => {
                 value={date_of_birth}
                 onChange={onValueChange}
               />
-
-              {/* <InputLabel htmlFor="my-date">Date of Birth</InputLabel> */}
-              {/* <TextField
-            label="Date of Birth"
-            type="date"
-            onChange={onValueChange}
-            name="date_of_birth"
-            InputLabelProps={{ shrink: true }}
-            value={date_of_birth}
-          /> */}
             </FormControl>
             <FormControl>
               <TextField
@@ -305,13 +283,6 @@ const AddUser = () => {
                 onChange={(e) => onValueChange(e)}
                 variant="outlined"
               />
-              {/* <InputLabel htmlFor="my-input">Blood Group</InputLabel>
-          <OutlinedInput
-            onChange={(e) => onValueChange(e)}
-            name="blood_group"
-            value={blood_group}
-            id="my-input"
-          /> */}
             </FormControl>
             <FormControl>
               <TextField
@@ -323,13 +294,6 @@ const AddUser = () => {
                 onChange={(e) => onValueChange(e)}
                 variant="outlined"
               />
-              {/* <InputLabel htmlFor="my-input">Address</InputLabel>
-          <OutlinedInput
-            onChange={(e) => onValueChange(e)}
-            name="address"
-            value={address}
-            id="address"
-          /> */}
             </FormControl>
             <FormControl>
               <TextField
@@ -341,13 +305,6 @@ const AddUser = () => {
                 onChange={(e) => onValueChange(e)}
                 variant="outlined"
               />
-              {/* <InputLabel htmlFor="my-input">Mobile 1</InputLabel>
-          <OutlinedInput
-            onChange={(e) => onValueChange(e)}
-            name="mobile_1"
-            value={mobile_1}
-            id="my-input"
-          /> */}
             </FormControl>
             <FormControl>
               <TextField
@@ -358,13 +315,6 @@ const AddUser = () => {
                 onChange={(e) => onValueChange(e)}
                 variant="outlined"
               />
-              {/* <InputLabel htmlFor="my-input">Mobile 2</InputLabel>
-          <OutlinedInput
-            onChange={(e) => onValueChange(e)}
-            name="mobile_2"
-            value={mobile_2}
-            id="mobile_2"
-          /> */}
             </FormControl>
             <FormControl>
               <TextField
@@ -375,13 +325,6 @@ const AddUser = () => {
                 onChange={(e) => onValueChange(e)}
                 variant="outlined"
               />
-              {/* <InputLabel htmlFor="my-input">City</InputLabel>
-          <OutlinedInput
-            onChange={(e) => onValueChange(e)}
-            name="city"
-            value={city}
-            id="my-input"
-          /> */}
             </FormControl>
             <FormControl>
               <TextField
@@ -392,13 +335,6 @@ const AddUser = () => {
                 onChange={(e) => onValueChange(e)}
                 variant="outlined"
               />
-              {/* <InputLabel htmlFor="my-input">City</InputLabel>
-          <OutlinedInput
-            onChange={(e) => onValueChange(e)}
-            name="city"
-            value={city}
-            id="my-input"
-          /> */}
             </FormControl>
             <FormControl>
               <TextField
@@ -409,13 +345,6 @@ const AddUser = () => {
                 onChange={(e) => onValueChange(e)}
                 variant="outlined"
               />
-              {/* <InputLabel htmlFor="my-input">City</InputLabel>
-          <OutlinedInput
-            onChange={(e) => onValueChange(e)}
-            name="city"
-            value={city}
-            id="my-input"
-          /> */}
             </FormControl>
             <FormControl>
               <TextField
@@ -426,31 +355,26 @@ const AddUser = () => {
                 onChange={(e) => onValueChange(e)}
                 variant="outlined"
               />
-              {/* <InputLabel htmlFor="my-input">City</InputLabel>
-          <OutlinedInput
-            onChange={(e) => onValueChange(e)}
-            name="city"
-            value={city}
-            id="my-input"
-          /> */}
             </FormControl>
-
             <FormControl>
               <TextField
-                id="grno"
-                name="grno"
-                label="GR No."
-                value={grno}
+                id="rollno"
+                name="rollno" 
+                label="Roll No."               
+                value={rollno}              
                 onChange={(e) => onValueChange(e)}
                 variant="outlined"
               />
-              {/* <InputLabel htmlFor="my-input">City</InputLabel>
-          <OutlinedInput
-            onChange={(e) => onValueChange(e)}
-            name="city"
-            value={city}
-            id="my-input"
-          /> */}
+              </FormControl>
+            <FormControl>
+              <TextField
+                id="grno"
+                name="grno" 
+                label="GR No."               
+                value={grno}              
+                onChange={(e) => onValueChange(e)}
+                variant="outlined"
+              />
             </FormControl>
             <FormControl>
               <InputLabel style={{ marginLeft: 14 }}>Standard</InputLabel>
@@ -504,13 +428,6 @@ const AddUser = () => {
                 <MenuItem value={'M.Pharm Year 1'}>M.Pharm Year 1</MenuItem>
                 <MenuItem value={'M.Pharm Year 2'}>M.Pharm Year 2</MenuItem>
               </Select>
-              {/* <InputLabel htmlFor="my-input">Standard</InputLabel>
-          <OutlinedInput
-            onChange={(e) => onValueChange(e)}
-            name="standard"
-            value={standard}
-            id="standard"
-          /> */}
             </FormControl>
             <FormControl>
               <TextField
@@ -522,13 +439,6 @@ const AddUser = () => {
                 onChange={(e) => onValueChange(e)}
                 variant="outlined"
               />
-              {/* <InputLabel htmlFor="my-input">Division</InputLabel>
-          <OutlinedInput
-            onChange={(e) => onValueChange(e)}
-            name="division"
-            value={division}
-            id="my-input"
-          /> */}
             </FormControl>
             <FormControl>
               <InputLabel style={{ marginLeft: 14 }}>House</InputLabel>
@@ -570,14 +480,6 @@ const AddUser = () => {
                   file && <img style={{ width: '200px', objectFit: 'contain' }} src={URL.createObjectURL(file)} alt='student-photo-id' />
                 }
               </Box>
-              {/* <TextField
-            type="file"
-            label="Upload Image"
-            InputLabelProps={{ shrink: true }}
-            onChange={saveFile}
-            accept="image/*"
-            value={photo}
-          /> */}
             </FormControl>
             <FormControl>
               <Button variant="contained" color="primary" onClick={uploadFile}>
