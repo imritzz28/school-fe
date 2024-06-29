@@ -34,6 +34,11 @@ const initialValue = {
   division: '',
   blood_group: '',
   date_of_birth: '',
+  house: '',
+  fathername: '',
+  fathermobile: '',
+  mothername: '',
+  mothermobile: '',
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -105,6 +110,11 @@ const AddUser = () => {
     division,
     blood_group,
     date_of_birth,
+    house,
+    fathername,
+    fathermobile,
+    mothername,
+    mothermobile,
   } = student
   const classes = useStyles()
 
@@ -173,6 +183,7 @@ const AddUser = () => {
       'date_of_birth',
       moment(date_of_birth).format('YYYY-MM-DD hh:mm:ss'),
     )
+    formData.append('house',house)
     formData.append('photo', myNewFile)
     formData.append('photo_name', myNewFile.name)
 
@@ -265,8 +276,8 @@ const AddUser = () => {
                 required
                 id="date_of_birth"
                 name="date_of_birth"
-                label="Date of Birth"
-                type="date"
+                label="Date of Birth"                
+                type="date"                 
                 variant="outlined"
                 InputLabelProps={{
                   shrink: true,
@@ -357,6 +368,75 @@ const AddUser = () => {
             </FormControl>
             <FormControl>
               <TextField
+                id="fathername"
+                name="fathername"
+                label="Father Name"
+                value={fathername}
+                onChange={(e) => onValueChange(e)}
+                variant="outlined"
+              />
+              {/* <InputLabel htmlFor="my-input">City</InputLabel>
+          <OutlinedInput
+            onChange={(e) => onValueChange(e)}
+            name="city"
+            value={city}
+            id="my-input"
+          /> */}
+            </FormControl>
+            <FormControl>
+              <TextField
+                id="fathermobile"
+                name="fathermobile"
+                label="Father Mobile"
+                value={fathermobile}
+                onChange={(e) => onValueChange(e)}
+                variant="outlined"
+              />
+              {/* <InputLabel htmlFor="my-input">City</InputLabel>
+          <OutlinedInput
+            onChange={(e) => onValueChange(e)}
+            name="city"
+            value={city}
+            id="my-input"
+          /> */}
+            </FormControl>
+            <FormControl>
+              <TextField
+                id="mothername"
+                name="mothername"
+                label="Mother Name"
+                value={mothername}
+                onChange={(e) => onValueChange(e)}
+                variant="outlined"
+              />
+              {/* <InputLabel htmlFor="my-input">City</InputLabel>
+          <OutlinedInput
+            onChange={(e) => onValueChange(e)}
+            name="city"
+            value={city}
+            id="my-input"
+          /> */}
+            </FormControl>
+            <FormControl>
+              <TextField
+                id="mothermobile"
+                name="mothermobile"
+                label="Mother Mobile"
+                value={mothermobile}
+                onChange={(e) => onValueChange(e)}
+                variant="outlined"
+              />
+              {/* <InputLabel htmlFor="my-input">City</InputLabel>
+          <OutlinedInput
+            onChange={(e) => onValueChange(e)}
+            name="city"
+            value={city}
+            id="my-input"
+          /> */}
+            </FormControl>
+
+            <FormControl>
+              <TextField
                 id="grno"
                 name="grno"
                 label="GR No."
@@ -417,6 +497,12 @@ const AddUser = () => {
                 <MenuItem value={'F.Y.BA'}>F.Y.BA</MenuItem>
                 <MenuItem value={'S.Y.BA'}>S.Y.BA</MenuItem>
                 <MenuItem value={'T.Y.BA'}>T.Y.BA</MenuItem>
+                <MenuItem value={'B.Pharm Year 1'}>B.Pharm Year 1</MenuItem>
+                <MenuItem value={'B.Pharm Year 2'}>B.Pharm Year 2</MenuItem>
+                <MenuItem value={'B.Pharm Year 3'}>B.Pharm Year 3</MenuItem>
+                <MenuItem value={'B.Pharm Year 4'}>B.Pharm Year 4</MenuItem>
+                <MenuItem value={'M.Pharm Year 1'}>M.Pharm Year 1</MenuItem>
+                <MenuItem value={'M.Pharm Year 2'}>M.Pharm Year 2</MenuItem>
               </Select>
               {/* <InputLabel htmlFor="my-input">Standard</InputLabel>
           <OutlinedInput
@@ -443,6 +529,27 @@ const AddUser = () => {
             value={division}
             id="my-input"
           /> */}
+            </FormControl>
+            <FormControl>
+              <InputLabel style={{ marginLeft: 14 }}>House</InputLabel>
+              <Select
+                required
+                id="house"
+                label="House"
+                name="house"
+                value={house}
+                onChange={(e) => onValueChange(e)}
+                variant="outlined"
+              >
+                <MenuItem value={'Green'}>Green</MenuItem>
+                <MenuItem value={'White'}>White</MenuItem>
+                <MenuItem value={'Blue'}>Blue</MenuItem>
+                <MenuItem value={'Red'}>Red</MenuItem>
+                <MenuItem value={'Yellow'}>Yellow</MenuItem>
+                <MenuItem value={'Pink'}>Pink</MenuItem>
+                <MenuItem value={'Black'}>Black</MenuItem>
+                <MenuItem value={'Purple'}>Purple</MenuItem>
+              </Select>
             </FormControl>
             <FormControl>
               <InputLabel shrink htmlFor="upload-file">
